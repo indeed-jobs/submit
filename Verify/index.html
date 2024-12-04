@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Identity</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Setting up the body */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        /* Styling the container */
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Styling the message */
+        .message {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* Styling the button */
+        .verify-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .verify-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Spinner styling */
+        .spinner {
+            border: 8px solid #f3f3f3; /* Light gray */
+            border-top: 8px solid #3498db; /* Blue color for spinner */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1.5s linear infinite;
+            margin-top: 20px;
+        }
+
+        /* Keyframe for the spinner animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hidden by default, shown when redirecting */
+        .redirect-message {
+            display: none;
+            font-size: 14px;
+            color: #333;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message">
+            To complete this operation, please verify your identity. This step ensures we’re receiving this submission from a real person and helps keep everything secure.
+        </div>
+        <button class="verify-button" onclick="startVerification()">Verify Identity</button>
+
+        <!-- Spinner and message will appear when clicked -->
+        <div class="spinner" id="spinner" style="display:none;"></div>
+        <div class="redirect-message" id="redirect-message">Redirecting for verification, please wait...</div>
+    </div>
+    
+    <script>
+        function startVerification() {
+            // Show the spinner and redirect message
+            document.getElementById('spinner').style.display = 'block';
+            document.getElementById('redirect-message').style.display = 'block';
+
+            // Wait for 5 seconds before redirecting
+            setTimeout(function() {
+                // Redirect to the "Notice/index.html" after 5 seconds
+                window.location.href = 'Notice/index.html';
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    </script>
+</body>
+</html>
